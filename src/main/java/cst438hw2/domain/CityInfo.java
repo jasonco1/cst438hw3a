@@ -5,13 +5,16 @@ package cst438hw2.domain;
 public class CityInfo {
 	
 	public City city;
-	public Country country;
-	public TempAndTime tempAndTime;
+//	public Country country;
+//	public TempAndTime tempAndTime;
+	public String name;
+	public double tempf;
+	public String adjustTime;
 		
-	public CityInfo(City city, Country country, TempAndTime tempAndTime) {
+	public CityInfo(City city, String name, double tempf, String adjustTime) {
 		this.city = city;
-		this.country = country;
-		this.tempAndTime = tempAndTime;
+		this.name = name;
+		this.tempf = tempf;
+		this.adjustTime = adjustTime;
 	}
-
 }

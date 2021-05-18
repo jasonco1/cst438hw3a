@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>City</title>
+</head>
+<body>
+	<h2>City</h2> <br><br>
+	<p th:inline="text"> [[${cityInfo}]] </p><br><br>
+	
+	
+<!-- ID: <span th:inline="text">[${ID}] </span> <br> -->
+<!-- Name: <span th:inline="text">[${name}] </span> <br>
+Country Code: <span th:inline="text">[${countryCode}] </span> <br>
+District: <span th:inline="text">[${district}] </span> <br>
+Population: <span th:inline="text">[${population}] </span> <br>
+Local Weather: <span th:inline="text">[${localWeather}] </span> <br>
+Local Time: <span th:inline="text">[${localTime}] </span> <br> -->
+
+<!-- temp -->
+<p> For a fabulous weekend get away for 2 to [[${cityInfo.city.getName()}]] sign up here. <span th:inline="text"> </span></p> 
+	<form action="/reservation" method="post">
+		Email: <input type="text" name="email" /> <br> 
+		<input type="radio" id="luxury" name="level" value="luxury"> Luxury $1000 <br>
+		<input type="radio" id="veryGood" name="level" value="veryGood"> Very Good $500 <br>
+		<input type="radio" id="good" name="level" value="good"> Good $350 <br>
+		<input type="submit" value="Submit" />
+	</form>
+
+</body>
+</html>

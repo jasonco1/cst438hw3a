@@ -1,5 +1,6 @@
 package cst438hw2.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -16,6 +17,7 @@ public class City {
 	private String name;
 	private String district;
 	private int population;
+	private String countryCode;
 	
 	// Transient marks extra field in an Entity class
 	//  that is not read/written to the database.
@@ -35,7 +37,7 @@ public class City {
 		this.population = population;
 		this.country = country;
 	}
-
+	@Column
 	public int getID() {
 		return ID;
 	}
@@ -83,6 +85,11 @@ public class City {
 	public void setCountry(Country country) {
 		this.country = country;
 	}
+	
+	@Column(name = "CountryCode")
+	public String getCountryCode() {
+		return countryCode;
+	}
 
 
 	@Override
@@ -126,7 +133,4 @@ public class City {
 		return "City [ID=" + ID + ", name=" + name + ", district=" + district + ", population=" + population
 				+ ", weather=" + weather + ", country=" + country + "]";
 	}
-	
-	
-
 }
