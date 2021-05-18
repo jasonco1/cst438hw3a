@@ -8,13 +8,13 @@ public class CityInfo {
 //	public Country country;
 //	public TempAndTime tempAndTime;
 	public String name;
-	public double tempf;
+	public double tempF; //use camel-case for local variable names per Google Java style guide
 	public String adjustTime;
 		
-	public CityInfo(City city, String name, double tempf, String adjustTime) {
+	public CityInfo(City city, String name, double tempF, String adjustTime) {
 		this.city = city;
 		this.name = name;
-		this.tempf = tempf;
+		this.tempF = tempF;
 		this.adjustTime = adjustTime;
 	}
 }

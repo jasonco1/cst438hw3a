@@ -9,6 +9,8 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.JsonNode;
 import cst438hw2.domain.TempAndTime;
 
+//Add description of the functions WeatherService performs, e.g.,
+//Builds REST Template, Returns TimeAndTemp object...
 @Service
 public class WeatherService {
 	
