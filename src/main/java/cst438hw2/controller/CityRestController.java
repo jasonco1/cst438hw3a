@@ -10,6 +10,9 @@ import org.springframework.web.server.ResponseStatusException;
 import cst438hw2.domain.CityInfo;
 import cst438hw2.service.CityService;
 
+
+//CityRestController returns a JSON object with city weather data from the public
+//OpenWeatherMap API
 @RestController
 public class CityRestController {
 	@Autowired
@@ -21,7 +24,7 @@ public class CityRestController {
 			// city not found
 			throw new ResponseStatusException(
 					HttpStatus.NOT_FOUND,
-					"The city "+cityName+" not found."
+					"The city " + cityName + " not found."
 					);
 		} else {
 			return cityInfo;

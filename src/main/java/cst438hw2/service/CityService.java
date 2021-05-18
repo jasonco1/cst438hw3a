@@ -32,13 +32,17 @@ public class CityService {
 			City city = cities.get(0);
 			Country country =
 					countryRepository.findByCode(city.getCountryCode());
-			TempAndTime tt = weatherService.getTempAndTime(cityName);
-			double tempf = (tt.temp - 273.15) * 9.0/5.0 + 32.0;
-			tempf = ((int)(tempf*100.0))/100.0;
+			
+			//***Imporant: Do not use non-descriptive variable names consisting of letters that don't have a clear meaning***
+			//Examples: tt should be timeAndTemp, tz should be timeZone, sdf should be simpleDateFormat
+			//See: Google Java Style Guide and Software Engineering at Google textbook
+			TempAndTime timeAndTemp = weatherService.getTempAndTime(cityName);
+			double tempF = (tt.temp - 273.15) * 9.0/5.0 + 32.0;
+			tempF = ((int)(tempF*100.0))/100.0;
 			CityInfo cityInfo = new CityInfo(city,
 								country.getName(),
-								tempf,
-								adjustTime(tt.timezone, tt.time*1000));
+								tempF,
+								adjustTime(timeAndTemp.timezone, timeAndTemp.time*1000));
 			return cityInfo;
 			} else {
 				// cityName not found
@@ -50,12 +54,11 @@ public class CityService {
 		SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
 		TimeZone tz = TimeZone.getTimeZone("UTC");
 		tz.setRawOffset(timezone*1000);
-		sdf.setTimeZone(tz);
+		sdf.setTimeZone(tz); 
 		Date date = new Date(time);
 		return sdf.format(date);
 		}
 		
-
 		//hw 3 addition
 		public void requestReservation(
 						String cityName,
@@ -69,8 +72,5 @@ public class CityService {
 						fanout.getName(),
 						"", //routing key = none
 						msg);
-		}
-		
-		
-		
+		}	
 }

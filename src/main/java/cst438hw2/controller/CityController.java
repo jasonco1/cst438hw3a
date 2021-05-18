@@ -14,10 +14,9 @@ import cst438hw2.domain.CityRepository;
 import cst438hw2.domain.CountryRepository;
 import cst438hw2.service.CityService;
  
-//Create a CityController class that handles http get request. 
-//The @PathVariable annotation tells spring to parse the URL and 
-//put the text that occurs after /cities/ into the cityName parameter.
-//name,countryCode,countryName.district,population.temp(f),time
+//CityController handles HTTP GET and POST requests
+//GET route returns city_show HTML form and POST route sends a new message 
+//to the RabbitMQ message queue
 @Controller
 public class CityController {
 	@Autowired
@@ -27,11 +26,11 @@ public class CityController {
 		CityInfo cityInfo = cityService.getCityInfo(cityName);
 		if (cityInfo == null) {
 			//error city no found
-			model.addAttribute("error", "City not found. "+cityName);
-			return "cityerror";
+			model.addAttribute("error", "City not found. " + cityName);
+			return "cityerror"; //use underscore to separate HTML template words, city_error
 		} else {
 			model.addAttribute("cityInfo", cityInfo);
-			return "cityshow";
+			return "cityshow"; //use underscore to separate HTML template words, city_show
 		}
 	}
 	
